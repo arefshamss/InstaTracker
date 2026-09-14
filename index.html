@@ -40,7 +40,7 @@
             class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"
           ></span>
           <span class="text-xs text-slate-400"
-            >پردازش ۱۰۰٪ محلی و امن (آفلاین)</span
+            >پردازش ۱۰۰٪ لوکال و امن (آفلاین)</span
           >
         </div>
         <button
@@ -58,21 +58,23 @@
         >
           <span class="w-2 h-2 rounded-full bg-indigo-400"></span>
           <span class="text-xs font-mono font-semibold text-slate-300"
-            >نسخه 1.0.4</span
+            >نسخه 1.0.5</span
           >
         </div>
 
         <h1
           class="text-3xl md:text-4xl font-extrabold bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 bg-clip-text text-transparent leading-tight py-5"
         >
-          رادار هوشمند فالوورهای اینستاگرام
+          تحلیل تغییرات فالوور اینستاگرام
         </h1>
 
         <p
           class="text-slate-400 mt-2 text-sm md:text-base max-w-xl mx-auto leading-relaxed"
         >
           دوتا فایل خروجی اینستاگرامت رو بده تا دقیق بهت بگم کیا جدید اومدن و
-          کیا آنفالوت کردن. هیچ دیتایی هم جایی ذخیره یا ارسال نمیشه.
+          کیا آنفالوت کردن.
+          <br />
+          فایل‌هات از دستگاهت خارج نمی‌شن و جایی آپلود نمی‌شن.
         </p>
 
         <div class="mt-4 flex justify-center gap-3">
@@ -86,6 +88,47 @@
         </div>
       </header>
 
+      <!-- How It Works Box -->
+      <div
+        class="rounded-2xl bg-slate-900/80 border border-slate-700 p-5 text-right mb-4"
+      >
+        <h2
+          class="text-base font-semibold text-slate-100 mb-3 flex items-center gap-2"
+        >
+          <span>🚀</span>
+          <span>چطور کار می‌کنه؟</span>
+        </h2>
+        <ol
+          class="space-y-2 text-sm text-slate-300 leading-relaxed list-decimal list-inside pr-2"
+        >
+          <li>
+            <strong class="text-rose-400">فایل قدیمی:</strong>
+
+            فایل فالوورهایی که <span class="text-amber-300">قبلا</span> از
+            اینستاگرام خروجی گرفتی.
+          </li>
+          <li>
+            <strong class="text-emerald-400">فایل جدید:</strong>
+            فایلی که <span class="text-amber-300">به‌تازگی</span> از اینستاگرام
+            خروجی گرفتی.
+          </li>
+          <li>
+            برنامه دو فایل رو با هم مقایسه می‌کنه و تغییرات رو بهت نشون میده.
+          </li>
+        </ol>
+        <div
+          class="mt-3 p-3 bg-amber-500/10 border border-amber-500/20 rounded-xl text-xs text-amber-300/90 leading-relaxed flex items-start gap-2"
+        >
+          <span class="text-base leading-none">💡</span>
+          <span>
+            <strong class="text-amber-200">نکته مهم:</strong>
+            برای مقایسه، باید فایل‌ها رو در
+            <strong>دو تاریخ یا بازه زمانی مختلف</strong> از اینستاگرام بگیری تا
+            برنامه بتونه تغییرات رو محاسبه کنه.
+          </span>
+        </div>
+      </div>
+
       <!-- Upload Section -->
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
         <!-- File 1: Old -->
@@ -93,7 +136,7 @@
           class="bg-slate-800/80 border border-slate-700 rounded-2xl p-5 flex flex-col items-center text-center"
         >
           <span
-            class="text-xs font-semibold px-2.5 py-1 bg-amber-500/10 text-amber-400 rounded-full mb-3"
+            class="text-xs font-semibold px-2.5 py-1 bg-blue-500/10 text-blue-400 rounded-full mb-3"
             >مرحله اول</span
           >
           <h2 class="font-medium text-slate-200 mb-2">فایل قدیمی</h2>
@@ -194,7 +237,9 @@
           <div
             class="bg-slate-800/60 border border-slate-700/60 p-3.5 rounded-xl"
           >
-            <span class="text-xs text-slate-400 block mb-1">فالوورهای قبل</span>
+            <span class="text-xs text-slate-400 block mb-1"
+              >تعداد کل فالوورهای قدیم</span
+            >
             <span id="oldTotalCount" class="text-lg font-bold text-slate-200"
               >0</span
             >
@@ -202,7 +247,9 @@
           <div
             class="bg-slate-800/60 border border-slate-700/60 p-3.5 rounded-xl"
           >
-            <span class="text-xs text-slate-400 block mb-1">فالوورهای بعد</span>
+            <span class="text-xs text-slate-400 block mb-1"
+              >تعداد کل فالوورهای فعلی</span
+            >
             <span id="newTotalCount" class="text-lg font-bold text-slate-200"
               >0</span
             >
@@ -211,7 +258,7 @@
             class="bg-emerald-950/30 border border-emerald-800/40 p-3.5 rounded-xl"
           >
             <span class="text-xs text-emerald-300 block mb-1"
-              >فالوور جدید (+)</span
+              >تعداد فالوور جدید</span
             >
             <span id="gainedCount" class="text-lg font-bold text-emerald-400"
               >0</span
@@ -221,7 +268,7 @@
             class="bg-rose-950/30 border border-rose-800/40 p-3.5 rounded-xl"
           >
             <span class="text-xs text-rose-300 block mb-1"
-              >آنفالو کرده (-)</span
+              >تعداد آنفالو کرده‌ها</span
             >
             <span id="lostCount" class="text-lg font-bold text-rose-400"
               >0</span
@@ -284,7 +331,7 @@
       class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm hidden"
     >
       <div
-        class="bg-slate-900 border border-slate-800 rounded-2xl max-w-lg w-full p-6 text-right relative shadow-2xl"
+        class="bg-slate-900 border border-slate-800 rounded-2xl max-w-lg w-full p-6 text-right relative shadow-2xl max-h-[90vh] overflow-y-auto"
       >
         <!-- Close Button -->
         <button
@@ -302,12 +349,15 @@
         </h3>
 
         <ol
-          class="space-y-3 text-sm text-slate-300 leading-relaxed list-decimal list-inside pr-1"
+          class="space-y-4 text-sm text-slate-300 leading-relaxed list-decimal list-inside pr-1"
         >
+          <li>در اینستاگرام به پروفایل خودت برو و سه خط (منو) رو بزن.</li>
           <li>
-            توی اینستاگرام برو به پروفایلت، سه خط بالا رو بزن و برو به
-            <strong class="text-indigo-400">Accounts Center</strong>.
+            بعد برو به
+            <strong class="text-indigo-400">Accounts Center</strong> یا
+            <strong class="text-indigo-400">Meta Account</strong>
           </li>
+
           <li>
             گزینه
             <strong class="text-indigo-400"
@@ -316,46 +366,75 @@
             رو انتخاب کن.
           </li>
           <li>
-            بزن روی
-            <strong class="text-indigo-400">Download your information</strong> و
-            بعد
-            <strong class="text-indigo-400"
-              >Download or transfer information</strong
-            >.
+            وارد
+            <strong class="text-indigo-400">Export your information</strong>
+            شو.
           </li>
           <li>
-            گزینه
-            <strong class="text-indigo-400">Some of your information</strong> رو
-            بزن (کل اکانت رو نزن که سنگین نشه).
-          </li>
-          <li>
-            تیک گزینه
-            <strong class="text-emerald-400">Followers and following</strong> رو
-            فعال کن و Next رو بزن.
-          </li>
-          <li>
-            گزینه <strong class="text-indigo-400">Download to device</strong> رو
-            انتخاب کن.
-          </li>
-          <li>
-            در بخش آخر:
+            روی
+            <strong class="text-indigo-400">Create export</strong>
+            بزن.
+
             <ul
               class="list-disc list-inside mt-1.5 space-y-1 pr-4 text-slate-400 text-xs"
             >
               <li>
-                <strong>Format:</strong> هر دو گزینه
-                <code class="text-amber-300 font-mono">JSON</code> یا
-                <code class="text-amber-300 font-mono">HTML</code> قابل قبوله.
-              </li>
-              <li>
-                <strong>Date range:</strong> بذار روی
-                <span class="text-emerald-300">All time</span>.
+                تو این مرحله اگه چندتا اکانت داشته باشی، باید اکانت مورد نظرت رو
+                انتخاب کنی
               </li>
             </ul>
           </li>
           <li>
-            در نهایت روی <strong>Create files</strong> بزن. بعد از چند دقیقه
-            اینستاگرام ایمیل یا نوتیف دانلود میده و فایل زیپ رو دریافت می‌کنی.
+            حالا
+            <strong class="text-indigo-400">Export to device</strong>
+            رو انتخاب کن.
+          </li>
+          <li>
+            گزینه
+            <strong class="text-indigo-400">Customize information</strong>
+            رو بزن.
+            <ul
+              class="list-disc list-inside mt-1.5 space-y-1 pr-4 text-slate-400 text-xs"
+            >
+              <li>
+                با استفاده از
+                <span class="text-amber-300">Clear all</span>
+                تیک همه گزینه‌ها رو بردار
+              </li>
+              <li>
+                فقط تیک گزینه
+                <strong class="text-emerald-400"
+                  >Followers and following</strong
+                >
+                رو فعال کن.
+              </li>
+              <li>Save رو بزن.</li>
+            </ul>
+          </li>
+          <li>
+            <strong class="text-indigo-400">Date Range</strong>
+            رو حتما بذار روی
+            <span class="text-emerald-300">All time</span>
+            .
+          </li>
+          <li>
+            <strong class="text-indigo-400">Format</strong> تفاوتی نداره،
+            <span class="text-amber-300">HTML</span> یا
+            <span class="text-amber-300">JSON</span> رو انتخاب کن.
+          </li>
+          <li><strong class="text-indigo-400">Start export</strong> رو بزن.</li>
+          <li>
+            پسورد پیجت رو وارد کن و
+            <strong class="text-indigo-400">Continue</strong>
+            رو بزن.
+          </li>
+          <li>
+            اینستاگرام برات ایمیل یا نوتیفیکیشن می‌فرسته که فایل آماده‌ست.
+            <ul
+              class="list-disc list-inside mt-1.5 space-y-1 pr-4 text-slate-400 text-xs"
+            >
+              <li>چند دقیقه تا چند ساعت ممکنه طول بکشه.</li>
+            </ul>
           </li>
         </ol>
 
@@ -394,7 +473,7 @@
           <p
             class="text-xs text-amber-400/90 bg-amber-500/10 p-2.5 rounded-lg border border-amber-500/20"
           >
-            💡 توجه: حتماً این صفحه را با مرورگر <b>Safari</b> باز کنید.
+            💡 توجه :حتماً این صفحه رو با مرورگر <b>Safari</b> باز کن.
           </p>
 
           <div
@@ -405,8 +484,7 @@
               >۱</span
             >
             <div>
-              در پایین مرورگر سافاری، روی آیکون <b>Share</b> (مربع با فلش رو به
-              بالا) ضربه بزنید:
+              در پایین مرورگر سافاری، روی آیکون <b>Share</b> ضربه بزن.
               <div class="mt-1.5 flex items-center gap-2 text-indigo-400">
                 <svg
                   class="w-5 h-5 inline"
@@ -434,8 +512,7 @@
               >۲</span
             >
             <div>
-              کمی اسکرول کنید و گزینه <b>Add to Home Screen</b> (افزودن به صفحه
-              اصلی) را انتخاب کنید.
+              کمی اسکرول کن و گزینه <b>Add to Home Screen</b> رو انتخاب کن.
             </div>
           </div>
 
@@ -446,9 +523,7 @@
               class="flex-shrink-0 w-6 h-6 flex items-center justify-center rounded-full bg-indigo-600 text-xs font-bold text-white"
               >۳</span
             >
-            <div>
-              در گوشه بالا، روی دکمه <b>Add</b> کلیک کنید تا اپلیکیشن نصب شود.
-            </div>
+            <div>در گوشه بالا، روی <b>Add</b> بزن تا برنامه نصب بشه.</div>
           </div>
         </div>
 
@@ -460,6 +535,18 @@
         </button>
       </div>
     </div>
+
+    <footer class="text-center text-sm text-slate-400 pt-10 pb-6">
+      ساخته شده با ❤️ توسط
+      <a
+        href="https://arefshams.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-slate-200 hover:text-white transition-colors"
+      >
+        عارف شمس‌پور
+      </a>
+    </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 

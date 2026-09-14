@@ -1,7 +1,7 @@
 {
   "name": "InstaTracker",
   "short_name": "InstaTracker",
-  "description": "مقایسه امن و محلی فالوورهای اینستاگرام بدون نیاز به لاگین",
+  "description": "مقایسه امن و لوکال فالوورهای اینستاگرام بدون نیاز به لاگین",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#0f172a",

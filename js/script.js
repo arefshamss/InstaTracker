@@ -1,4 +1,4 @@
-const APP_VERSION = "1.0.4";
+const APP_VERSION = "1.0.5";
 console.log(
   `%c InstaTracker 🚀 v${APP_VERSION} initialized `,
   "background: #4f46e5; color: #fff; border-radius: 4px; padding: 4px;",
