@@ -4,7 +4,7 @@
 
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![PWA Ready](https://img.shields.io/badge/PWA-Ready-success.svg)](#)
-[![Version](https://img.shields.io/badge/version-1.0.3-indigo.svg)](#)
+[![Version](https://img.shields.io/badge/version-1.0.4-indigo.svg)](#)
 [![100% Client-Side](https://img.shields.io/badge/security-100%25%20client--side-emerald.svg)](#)
 
 ---
