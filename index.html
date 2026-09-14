@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>آنالیزور فالوور اینستاگرام</title>
+
+    <!-- PWA Meta Tags -->
+    <link rel="manifest" href="./manifest.json" />
+    <meta name="theme-color" content="#4f46e5" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+    <meta name="apple-mobile-web-app-title" content="InstaTracker" />
+
+    <!-- Tailwind & Fonts -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body
+    class="bg-slate-900 text-slate-100 min-h-screen p-4 md:p-8 flex flex-col items-center"
+  >
+    <div class="max-w-4xl w-full">
+      <div class="flex justify-between items-center mb-6">
+        <div class="flex items-center gap-2">
+          <span
+            class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"
+          ></span>
+          <span class="text-xs text-slate-400"
+            >پردازش ۱۰۰٪ محلی و امن (آفلاین)</span
+          >
+        </div>
+        <button
+          id="installAppBtn"
+          class="hidden text-xs bg-indigo-600 hover:bg-indigo-500 text-white px-3 py-1.5 rounded-lg transition font-medium flex items-center gap-1.5 shadow"
+        >
+          <span>📲</span> نصب نسخه اپلیکیشن
+        </button>
+      </div>
+
+      <!-- Header -->
+      <header class="text-center mb-8">
+        <div
+          class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-800/80 border border-slate-700/80 mb-3 shadow-inner"
+        >
+          <span class="w-2 h-2 rounded-full bg-indigo-400"></span>
+          <span class="text-xs font-mono font-semibold text-slate-300"
+            >نسخه 1.0.0</span
+          >
+        </div>
+
+        <h1
+          class="text-3xl md:text-4xl font-extrabold bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 bg-clip-text text-transparent leading-tight py-5"
+        >
+          رادار هوشمند فالوورهای اینستاگرام
+        </h1>
+
+        <p
+          class="text-slate-400 mt-2 text-sm md:text-base max-w-xl mx-auto leading-relaxed"
+        >
+          دوتا فایل خروجی اینستاگرامت رو بده تا دقیق بهت بگم کیا جدید اومدن و
+          کیا آنفالوت کردن. هیچ دیتایی هم جایی ذخیره یا ارسال نمیشه.
+        </p>
+
+        <div class="mt-4 flex justify-center gap-3">
+          <button
+            id="openGuideBtn"
+            class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs md:text-sm font-medium text-slate-300 bg-slate-800/80 hover:bg-slate-700 border border-slate-700 rounded-lg transition"
+          >
+            <span>📖</span>
+            <span>چطور فایل رو از اینستاگرام بگیرم؟</span>
+          </button>
+        </div>
+      </header>
+
+      <!-- Upload Section -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+        <!-- File 1: Old -->
+        <div
+          class="bg-slate-800/80 border border-slate-700 rounded-2xl p-5 flex flex-col items-center text-center"
+        >
+          <span
+            class="text-xs font-semibold px-2.5 py-1 bg-amber-500/10 text-amber-400 rounded-full mb-3"
+            >مرحله اول</span
+          >
+          <h2 class="font-medium text-slate-200 mb-2">فایل قدیمی</h2>
+          <input
+            type="file"
+            id="oldFileInput"
+            accept=".html,.htm,.json,.zip"
+            class="hidden"
+          />
+          <label
+            for="oldFileInput"
+            id="oldFileLabel"
+            class="w-full border-2 border-dashed border-slate-600 hover:border-indigo-400 hover:bg-slate-700/50 rounded-xl p-6 cursor-pointer transition flex flex-col items-center"
+          >
+            <svg
+              class="w-8 h-8 text-slate-400 mb-2"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
+              />
+            </svg>
+            <span class="text-sm text-slate-300 font-medium"
+              >انتخاب فایل قدیمی</span
+            >
+            <span class="text-xs text-slate-500 mt-1">HTML، JSON یا ZIP</span>
+          </label>
+          <span
+            id="oldFileName"
+            class="text-xs text-emerald-400 mt-2 truncate w-full hidden"
+          ></span>
+        </div>
+
+        <!-- File 2: New -->
+        <div
+          class="bg-slate-800/80 border border-slate-700 rounded-2xl p-5 flex flex-col items-center text-center"
+        >
+          <span
+            class="text-xs font-semibold px-2.5 py-1 bg-blue-500/10 text-blue-400 rounded-full mb-3"
+            >مرحله دوم</span
+          >
+          <h2 class="font-medium text-slate-200 mb-2">فایل جدید</h2>
+          <input
+            type="file"
+            id="newFileInput"
+            accept=".html,.htm,.json,.zip"
+            class="hidden"
+          />
+          <label
+            for="newFileInput"
+            id="newFileLabel"
+            class="w-full border-2 border-dashed border-slate-600 hover:border-indigo-400 hover:bg-slate-700/50 rounded-xl p-6 cursor-pointer transition flex flex-col items-center"
+          >
+            <svg
+              class="w-8 h-8 text-slate-400 mb-2"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
+              />
+            </svg>
+            <span class="text-sm text-slate-300 font-medium"
+              >انتخاب فایل جدید</span
+            >
+            <span class="text-xs text-slate-500 mt-1">HTML، JSON یا ZIP</span>
+          </label>
+          <span
+            id="newFileName"
+            class="text-xs text-emerald-400 mt-2 truncate w-full hidden"
+          ></span>
+        </div>
+      </div>
+
+      <!-- Action Button -->
+      <div class="text-center mb-8">
+        <button
+          id="compareBtn"
+          disabled
+          class="bg-indigo-600 hover:bg-indigo-500 disabled:opacity-40 disabled:hover:bg-indigo-600 text-white font-medium py-3 px-8 rounded-xl shadow-lg transition duration-200 cursor-pointer disabled:cursor-not-allowed"
+        >
+          مقایسه و آنالیز
+        </button>
+      </div>
+
+      <!-- Results Section -->
+      <div id="results" class="hidden space-y-6">
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center">
+          <div
+            class="bg-slate-800/60 border border-slate-700/60 p-3.5 rounded-xl"
+          >
+            <span class="text-xs text-slate-400 block mb-1">فالوورهای قبل</span>
+            <span id="oldTotalCount" class="text-lg font-bold text-slate-200"
+              >0</span
+            >
+          </div>
+          <div
+            class="bg-slate-800/60 border border-slate-700/60 p-3.5 rounded-xl"
+          >
+            <span class="text-xs text-slate-400 block mb-1">فالوورهای بعد</span>
+            <span id="newTotalCount" class="text-lg font-bold text-slate-200"
+              >0</span
+            >
+          </div>
+          <div
+            class="bg-emerald-950/30 border border-emerald-800/40 p-3.5 rounded-xl"
+          >
+            <span class="text-xs text-emerald-300 block mb-1"
+              >فالوور جدید (+)</span
+            >
+            <span id="gainedCount" class="text-lg font-bold text-emerald-400"
+              >0</span
+            >
+          </div>
+          <div
+            class="bg-rose-950/30 border border-rose-800/40 p-3.5 rounded-xl"
+          >
+            <span class="text-xs text-rose-300 block mb-1"
+              >آنفالو کرده (-)</span
+            >
+            <span id="lostCount" class="text-lg font-bold text-rose-400"
+              >0</span
+            >
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- New Followers -->
+          <div
+            class="bg-slate-800/90 border border-emerald-500/30 rounded-2xl p-5 flex flex-col"
+          >
+            <div
+              class="flex items-center justify-between mb-4 border-b border-slate-700/70 pb-3"
+            >
+              <h3 class="font-bold text-emerald-400 flex items-center gap-2">
+                <span>➕</span> فالوورهای جدید
+              </h3>
+              <button
+                onclick="copyList('newFollowersList')"
+                class="text-xs text-slate-400 hover:text-white bg-slate-700/50 hover:bg-slate-700 px-2.5 py-1 rounded-lg transition"
+              >
+                کپی همه
+              </button>
+            </div>
+            <ul
+              id="newFollowersList"
+              class="space-y-2 overflow-y-auto max-h-80 pr-1 flex-1 text-sm"
+            ></ul>
+          </div>
+
+          <!-- Unfollowed -->
+          <div
+            class="bg-slate-800/90 border border-rose-500/30 rounded-2xl p-5 flex flex-col"
+          >
+            <div
+              class="flex items-center justify-between mb-4 border-b border-slate-700/70 pb-3"
+            >
+              <h3 class="font-bold text-rose-400 flex items-center gap-2">
+                <span>➖</span> آنفالو کرده‌ها
+              </h3>
+              <button
+                onclick="copyList('lostFollowersList')"
+                class="text-xs text-slate-400 hover:text-white bg-slate-700/50 hover:bg-slate-700 px-2.5 py-1 rounded-lg transition"
+              >
+                کپی همه
+              </button>
+            </div>
+            <ul
+              id="lostFollowersList"
+              class="space-y-2 overflow-y-auto max-h-80 pr-1 flex-1 text-sm"
+            ></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Guide Modal -->
+    <div
+      id="guideModal"
+      class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm hidden"
+    >
+      <div
+        class="bg-slate-900 border border-slate-800 rounded-2xl max-w-lg w-full p-6 text-right relative shadow-2xl"
+      >
+        <!-- Close Button -->
+        <button
+          id="closeGuideBtn"
+          class="absolute top-4 left-4 text-slate-400 hover:text-white text-lg"
+        >
+          ✕
+        </button>
+
+        <h3
+          class="text-lg font-bold text-slate-100 mb-4 flex items-center gap-2"
+        >
+          <span>📥</span>
+          <span>مراحل گرفتن خروجی از اینستاگرام</span>
+        </h3>
+
+        <ol
+          class="space-y-3 text-sm text-slate-300 leading-relaxed list-decimal list-inside pr-1"
+        >
+          <li>
+            توی اینستاگرام برو به پروفایلت، سه خط بالا رو بزن و برو به
+            <strong class="text-indigo-400">Accounts Center</strong>.
+          </li>
+          <li>
+            گزینه
+            <strong class="text-indigo-400"
+              >Your information and permissions</strong
+            >
+            رو انتخاب کن.
+          </li>
+          <li>
+            بزن روی
+            <strong class="text-indigo-400">Download your information</strong> و
+            بعد
+            <strong class="text-indigo-400"
+              >Download or transfer information</strong
+            >.
+          </li>
+          <li>
+            گزینه
+            <strong class="text-indigo-400">Some of your information</strong> رو
+            بزن (کل اکانت رو نزن که سنگین نشه).
+          </li>
+          <li>
+            تیک گزینه
+            <strong class="text-emerald-400">Followers and following</strong> رو
+            فعال کن و Next رو بزن.
+          </li>
+          <li>
+            گزینه <strong class="text-indigo-400">Download to device</strong> رو
+            انتخاب کن.
+          </li>
+          <li>
+            در بخش آخر:
+            <ul
+              class="list-disc list-inside mt-1.5 space-y-1 pr-4 text-slate-400 text-xs"
+            >
+              <li>
+                <strong>Format:</strong> هر دو گزینه
+                <code class="text-amber-300 font-mono">JSON</code> یا
+                <code class="text-amber-300 font-mono">HTML</code> قابل قبوله.
+              </li>
+              <li>
+                <strong>Date range:</strong> بذار روی
+                <span class="text-emerald-300">All time</span>.
+              </li>
+            </ul>
+          </li>
+          <li>
+            در نهایت روی <strong>Create files</strong> بزن. بعد از چند دقیقه
+            اینستاگرام ایمیل یا نوتیف دانلود میده و فایل زیپ رو دریافت می‌کنی.
+          </li>
+        </ol>
+
+        <button
+          id="closeGuideBottomBtn"
+          class="w-full mt-6 py-2 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl text-sm font-medium transition"
+        >
+          متوجه شدم، بریم!
+        </button>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+
+    <script src="/js/script.js"></script>
+  </body>
+</html>
