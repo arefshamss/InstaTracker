@@ -1,4 +1,4 @@
-const APP_VERSION = "1.0.2";
+const APP_VERSION = "1.0.3";
 console.log(
   `%c InstaTracker 🚀 v${APP_VERSION} initialized `,
   "background: #4f46e5; color: #fff; border-radius: 4px; padding: 4px;",
@@ -10,12 +10,34 @@ let deferredPrompt;
 const installBtn = document.getElementById("installAppBtn");
 const iosInstallModal = document.getElementById("iosInstallModal");
 const closeIosModalBtn = document.getElementById("closeIosModalBtn");
+const closeIosModalBottomBtn = document.getElementById(
+  "closeIosModalBottomBtn",
+);
 
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
     navigator.serviceWorker.register("./sw.js").catch((err) => {
       console.warn("SW registration failed: ", err);
     });
+  });
+}
+
+if (iosInstallModal) {
+  const closeIosModal = () => {
+    iosInstallModal.classList.add("hidden");
+    localStorage.setItem("ios_install_dismissed", "true");
+  };
+
+  if (closeIosModalBtn) {
+    closeIosModalBtn.addEventListener("click", closeIosModal);
+  }
+
+  if (closeIosModalBottomBtn) {
+    closeIosModalBottomBtn.addEventListener("click", closeIosModal);
+  }
+
+  iosInstallModal.addEventListener("click", (e) => {
+    if (e.target === iosInstallModal) closeIosModal();
   });
 }
 
@@ -55,18 +77,6 @@ if (isIOS && !isInStandaloneMode) {
       deferredPrompt = null;
     });
   }
-}
-
-if (iosInstallModal && closeIosModalBtn) {
-  const closeIosModal = () => {
-    iosInstallModal.classList.add("hidden");
-    localStorage.setItem("ios_install_dismissed", "true");
-  };
-
-  closeIosModalBtn.addEventListener("click", closeIosModal);
-  iosInstallModal.addEventListener("click", (e) => {
-    if (e.target === iosInstallModal) closeIosModal();
-  });
 }
 
 ////////////////////////////////////////////////////////////////////////////

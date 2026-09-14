@@ -1,4 +1,4 @@
-const APP_VERSION = "v1.0.2";
+const APP_VERSION = "v1.0.3";
 const CACHE_NAME = `insta-tracker-${APP_VERSION}`;
 
 const ASSETS_TO_CACHE = [
