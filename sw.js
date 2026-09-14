@@ -1,4 +1,4 @@
-const APP_VERSION = "v1.0.0";
+const APP_VERSION = "v1.0.2";
 const CACHE_NAME = `insta-tracker-${APP_VERSION}`;
 
 const ASSETS_TO_CACHE = [
@@ -7,6 +7,7 @@ const ASSETS_TO_CACHE = [
   "./css/style.css",
   "./js/script.js",
   "./manifest.json",
+  "./img/logo.png",
   "https://cdn.tailwindcss.com",
   "https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js",
   "https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700&display=swap",

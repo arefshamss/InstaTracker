@@ -4,7 +4,7 @@
 
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![PWA Ready](https://img.shields.io/badge/PWA-Ready-success.svg)](#)
-[![Version](https://img.shields.io/badge/version-1.0.0-indigo.svg)](#)
+[![Version](https://img.shields.io/badge/version-1.0.2-indigo.svg)](#)
 [![100% Client-Side](https://img.shields.io/badge/security-100%25%20client--side-emerald.svg)](#)
 
 ---
@@ -53,6 +53,7 @@ You can access and install the live app here:
 این ابزار برای مقایسه دقیق فالوورهای اینستاگرام طراحی شده تا بدون نیاز به وارد کردن پسورد یا لاگین، بتوانید تغییرات فالوورها (افراد جدید و کسانی که آنفالو کرده‌اند) را مشاهده کنید.
 
 ### ویژگی‌های اصلی:
+
 - **کاملاً امن و آفلاین:** هیچ داده‌ای به هیچ سروری ارسال نمی‌شود و تمام پردازش‌ها داخل مرورگر سیستم یا گوشی خودتان انجام می‌شود.
 - **پشتیبانی از فایل ZIP:** نیازی به استخراج دستی فایل‌ها نیست؛ فایل دانلودی اینستاگرام را مستقیماً آپلود کنید.
 - **قابلیت نصب (PWA):** می‌توانید برنامه را مثل یک اپلیکیشن بومی روی گوشی یا کامپیوتر خود نصب کنید.
@@ -62,6 +63,7 @@ You can access and install the live app here:
 ## 👨‍💻 Author
 
 **Aref Shamspour**
+
 - Website: [arefshams.com](https://arefshams.com) | [aref.info](https://aref.info)
 - GitHub: [@arefshamss](https://github.com/arefshamss)
 

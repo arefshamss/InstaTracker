@@ -1,13 +1,15 @@
-const APP_VERSION = "1.0.0";
+const APP_VERSION = "1.0.2";
 console.log(
   `%c InstaTracker 🚀 v${APP_VERSION} initialized `,
   "background: #4f46e5; color: #fff; border-radius: 4px; padding: 4px;",
 );
 
 ////////////////////////////////////////////////////////////////////////////
-//// PWA Installation Logic
+//// PWA & iOS Installation Logic
 let deferredPrompt;
 const installBtn = document.getElementById("installAppBtn");
+const iosInstallModal = document.getElementById("iosInstallModal");
+const closeIosModalBtn = document.getElementById("closeIosModalBtn");
 
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
@@ -17,23 +19,53 @@ if ("serviceWorker" in navigator) {
   });
 }
 
-window.addEventListener("beforeinstallprompt", (e) => {
-  e.preventDefault();
-  deferredPrompt = e;
-  if (installBtn) {
-    installBtn.classList.remove("hidden");
-  }
-});
+const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+const isInStandaloneMode =
+  window.navigator.standalone ||
+  window.matchMedia("(display-mode: standalone)").matches;
 
-if (installBtn) {
-  installBtn.addEventListener("click", async () => {
-    if (!deferredPrompt) return;
-    deferredPrompt.prompt();
-    const { outcome } = await deferredPrompt.userChoice;
-    if (outcome === "accepted") {
-      installBtn.classList.add("hidden");
+if (isIOS && !isInStandaloneMode) {
+  const iosDismissed = localStorage.getItem("ios_install_dismissed");
+  if (!iosDismissed && installBtn) {
+    installBtn.classList.remove("hidden");
+    installBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      if (iosInstallModal) {
+        iosInstallModal.classList.remove("hidden");
+      }
+    });
+  }
+} else {
+  window.addEventListener("beforeinstallprompt", (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    if (installBtn) {
+      installBtn.classList.remove("hidden");
     }
-    deferredPrompt = null;
+  });
+
+  if (installBtn) {
+    installBtn.addEventListener("click", async () => {
+      if (!deferredPrompt) return;
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      if (outcome === "accepted") {
+        installBtn.classList.add("hidden");
+      }
+      deferredPrompt = null;
+    });
+  }
+}
+
+if (iosInstallModal && closeIosModalBtn) {
+  const closeIosModal = () => {
+    iosInstallModal.classList.add("hidden");
+    localStorage.setItem("ios_install_dismissed", "true");
+  };
+
+  closeIosModalBtn.addEventListener("click", closeIosModal);
+  iosInstallModal.addEventListener("click", (e) => {
+    if (e.target === iosInstallModal) closeIosModal();
   });
 }
 

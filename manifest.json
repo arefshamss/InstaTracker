@@ -7,18 +7,25 @@
   "background_color": "#0f172a",
   "theme_color": "#4f46e5",
   "orientation": "portrait-primary",
-  "icons": [
-    {
-      "src": "./img/logo.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "./img/logo.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any"
-    }
-  ]
+"icons": [
+  {
+    "src": "./img/logo.png",
+    "sizes": "192x192",
+    "type": "image/png",
+    "purpose": "any"
+  },
+  {
+    "src": "./img/logo.png",
+    "sizes": "512x512",
+    "type": "image/png",
+    "purpose": "any"
+  },
+  {
+    "src": "./img/logo.png",
+    "sizes": "512x512",
+    "type": "image/png",
+    "purpose": "maskable"
+  }
+]
+
 }
