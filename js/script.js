@@ -25,7 +25,6 @@ if ("serviceWorker" in navigator) {
 if (iosInstallModal) {
   const closeIosModal = () => {
     iosInstallModal.classList.add("hidden");
-    localStorage.setItem("ios_install_dismissed", "true");
   };
 
   if (closeIosModalBtn) {
@@ -47,8 +46,7 @@ const isInStandaloneMode =
   window.matchMedia("(display-mode: standalone)").matches;
 
 if (isIOS && !isInStandaloneMode) {
-  const iosDismissed = localStorage.getItem("ios_install_dismissed");
-  if (!iosDismissed && installBtn) {
+  if (installBtn) {
     installBtn.classList.remove("hidden");
     installBtn.addEventListener("click", (e) => {
       e.preventDefault();
