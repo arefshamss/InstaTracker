@@ -22,7 +22,7 @@
 ## 🚀 Demo & Live App
 
 You can access and install the live app here:  
-👉 **[Live Demo](https://arefshamss.github.io/InstaTracker/)** *(Replace with your actual GitHub Pages URL)*
+👉 **[Live Demo](https://arefshamss.github.io/InstaTracker/)**
 
 ---
 
