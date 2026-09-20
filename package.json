@@ -1,0 +1,15 @@
+{
+  "name": "instatracker",
+  "version": "1.0.5",
+  "description": "A secure, offline-first Progressive Web App to track Instagram follower changes client-side without login.",
+  "homepage": "https://instatracker.arefshams.com/",
+  "author": {
+    "name": "Aref Shamspour",
+    "url": "https://arefshams.com"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/arefshamss/InstaTracker"
+  }
+}
