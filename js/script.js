@@ -1,4 +1,4 @@
-const APP_VERSION = "1.0.6";
+const APP_VERSION = "1.0.7";
 console.log(
   `%c InstaTracker 🚀 v${APP_VERSION} initialized `,
   "background: #4f46e5; color: #fff; border-radius: 4px; padding: 4px;",
@@ -175,7 +175,7 @@ async function processUploadedFile(file) {
 
   if (fileName.endsWith(".zip")) {
     if (typeof JSZip === "undefined") {
-      throw new Error("کتابخانه JSZip لود نشده است.");
+      throw new Error("The JSZip library failed to load.");
     }
 
     const zip = await JSZip.loadAsync(file);
@@ -204,7 +204,7 @@ async function processUploadedFile(file) {
     await Promise.all(filePromises);
 
     if (combinedUsers.size === 0) {
-      throw new Error("هیچ فایل فالووری درون پوشه زیپ یافت نشد.");
+      throw new Error("No followers file was found in the ZIP archive.");
     }
 
     return combinedUsers;
@@ -214,7 +214,7 @@ async function processUploadedFile(file) {
   const usernames = extractUsernames(content);
 
   if (usernames.size === 0) {
-    throw new Error("هیچ یوزرنیمی در فایل پیدا نشد.");
+    throw new Error("No usernames were found in the file.");
   }
 
   return usernames;
@@ -226,7 +226,7 @@ function setupFileInput(inputEl, labelEl, nameEl, isOld) {
   async function handleFile(file) {
     if (!file) return;
 
-    nameEl.textContent = "⏳ در حال خواندن و استخراج...";
+    nameEl.textContent = "⏳ Reading and extracting...";
     nameEl.classList.remove("hidden", "text-rose-400", "text-emerald-400");
     nameEl.classList.add("text-amber-400");
 
@@ -239,7 +239,7 @@ function setupFileInput(inputEl, labelEl, nameEl, isOld) {
         newUsernames = usernamesSet;
       }
 
-      nameEl.textContent = `✓ ${file.name} (${usernamesSet.size.toLocaleString("fa-IR")} فالوور)`;
+      nameEl.textContent = `✓ ${file.name} (${usernamesSet.size.toLocaleString("en-US")} followers)`;
 
       nameEl.classList.remove("text-amber-400");
       nameEl.classList.add("text-emerald-400");
@@ -251,7 +251,7 @@ function setupFileInput(inputEl, labelEl, nameEl, isOld) {
     } catch (err) {
       console.error(err);
 
-      nameEl.textContent = `❌ خطا: ${err.message || "فایل نامعتبر است"}`;
+      nameEl.textContent = `❌ Error: ${err.message || "Invalid file"}`;
 
       nameEl.classList.remove("text-amber-400");
       nameEl.classList.add("text-rose-400");
@@ -323,13 +323,13 @@ if (compareBtn) {
     lostUsers = [...oldUsernames].filter((x) => !newUsernames.has(x)).sort();
 
     document.getElementById("oldTotalCount").textContent =
-      oldUsernames.size.toLocaleString("fa-IR");
+      oldUsernames.size.toLocaleString("en-US");
     document.getElementById("newTotalCount").textContent =
-      newUsernames.size.toLocaleString("fa-IR");
+      newUsernames.size.toLocaleString("en-US");
     document.getElementById("gainedCount").textContent =
-      gainedUsers.length.toLocaleString("fa-IR");
+      gainedUsers.length.toLocaleString("en-US");
     document.getElementById("lostCount").textContent =
-      lostUsers.length.toLocaleString("fa-IR");
+      lostUsers.length.toLocaleString("en-US");
 
     renderList("newFollowersList", gainedUsers, "emerald");
     renderList("lostFollowersList", lostUsers, "rose");
@@ -348,7 +348,7 @@ function renderList(elementId, list, colorTheme) {
   container.innerHTML = "";
 
   if (list.length === 0) {
-    container.innerHTML = `<li class="text-slate-500 py-4 text-center">موردی یافت نشد.</li>`;
+    container.innerHTML = `<li class="text-slate-500 py-4 text-center">No results found.</li>`;
     return;
   }
 
@@ -360,7 +360,7 @@ function renderList(elementId, list, colorTheme) {
         <span>@${username}</span>
       </a>
       <button onclick="copySingleText('${username}', this)" class="text-xs text-slate-400 hover:text-slate-200 bg-slate-800 hover:bg-slate-700 px-2 py-1 rounded transition">
-        کپی
+        Copy
       </button>
     `;
     container.appendChild(li);
@@ -370,7 +370,7 @@ function renderList(elementId, list, colorTheme) {
 window.copySingleText = function (text, btnElement) {
   navigator.clipboard.writeText(text).then(() => {
     const originalText = btnElement.textContent;
-    btnElement.textContent = "کپی شد!";
+    btnElement.textContent = "Copied!";
     btnElement.classList.add("text-emerald-400");
     setTimeout(() => {
       btnElement.textContent = originalText;
@@ -385,7 +385,7 @@ window.copyList = function (listType) {
 
   navigator.clipboard.writeText(targetList.join("\n")).then(() => {
     alert(
-      `تعداد ${targetList.length.toLocaleString("fa-IR")} یوزرنیم با موفقیت کپی شد.`,
+      `${targetList.length.toLocaleString("en-US")} usernames copied successfully.`,
     );
   });
 };
