@@ -1,4 +1,4 @@
-const APP_VERSION = "1.0.5";
+const APP_VERSION = "1.0.6";
 console.log(
   `%c InstaTracker 🚀 v${APP_VERSION} initialized `,
   "background: #4f46e5; color: #fff; border-radius: 4px; padding: 4px;",
@@ -221,10 +221,9 @@ async function processUploadedFile(file) {
 }
 
 function setupFileInput(inputEl, labelEl, nameEl, isOld) {
-  if (!inputEl) return;
+  if (!inputEl || !labelEl) return;
 
-  inputEl.addEventListener("change", async (e) => {
-    const file = e.target.files[0];
+  async function handleFile(file) {
     if (!file) return;
 
     nameEl.textContent = "⏳ در حال خواندن و استخراج...";
@@ -241,22 +240,72 @@ function setupFileInput(inputEl, labelEl, nameEl, isOld) {
       }
 
       nameEl.textContent = `✓ ${file.name} (${usernamesSet.size.toLocaleString("fa-IR")} فالوور)`;
+
       nameEl.classList.remove("text-amber-400");
       nameEl.classList.add("text-emerald-400");
+
+      labelEl.classList.remove("border-indigo-400", "bg-indigo-500/10");
       labelEl.classList.add("border-emerald-500/70", "bg-emerald-950/20");
 
       checkReady();
     } catch (err) {
       console.error(err);
+
       nameEl.textContent = `❌ خطا: ${err.message || "فایل نامعتبر است"}`;
+
       nameEl.classList.remove("text-amber-400");
       nameEl.classList.add("text-rose-400");
 
-      if (isOld) oldUsernames = null;
-      else newUsernames = null;
+      labelEl.classList.remove("border-emerald-500/70", "bg-emerald-950/20");
+
+      if (isOld) {
+        oldUsernames = null;
+      } else {
+        newUsernames = null;
+      }
 
       checkReady();
     }
+  }
+
+  inputEl.addEventListener("change", (e) => {
+    const file = e.target.files[0];
+    handleFile(file);
+  });
+
+  ["dragenter", "dragover", "dragleave", "drop"].forEach((eventName) => {
+    labelEl.addEventListener(eventName, (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+    });
+  });
+
+  labelEl.addEventListener("dragenter", () => {
+    labelEl.classList.add("border-indigo-400", "bg-indigo-500/10");
+  });
+
+  labelEl.addEventListener("dragover", () => {
+    labelEl.classList.add("border-indigo-400", "bg-indigo-500/10");
+  });
+
+  labelEl.addEventListener("dragleave", (e) => {
+    if (!labelEl.contains(e.relatedTarget)) {
+      labelEl.classList.remove("border-indigo-400", "bg-indigo-500/10");
+    }
+  });
+
+  labelEl.addEventListener("drop", (e) => {
+    labelEl.classList.remove("border-indigo-400", "bg-indigo-500/10");
+
+    const file = e.dataTransfer.files[0];
+
+    if (!file) return;
+
+    const dataTransfer = new DataTransfer();
+    dataTransfer.items.add(file);
+    inputEl.files = dataTransfer.files;
+
+    handleFile(file);
   });
 }
 
