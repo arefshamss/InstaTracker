@@ -10,7 +10,7 @@ const ASSETS_TO_CACHE = [
   "./img/logo.png",
   "https://cdn.tailwindcss.com",
   "https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js",
-  "https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700&display=swap",
+  "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap",
 ];
 
 self.addEventListener("install", (event) => {
